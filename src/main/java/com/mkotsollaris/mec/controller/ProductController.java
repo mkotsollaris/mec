@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController @RequestMapping("/product") public class ProductsController
+@RestController @RequestMapping("/product") public class ProductController
 {
 
-    @RequestMapping(value = "/products&keywords={keywords}",
+    @RequestMapping(value = "search&keywords={keywords}",
             method = RequestMethod.GET)
     public Product getProduct(@PathVariable("keywords") String... keywords)
     {

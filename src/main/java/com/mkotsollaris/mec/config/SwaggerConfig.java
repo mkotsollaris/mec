@@ -21,7 +21,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
     {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors.basePackage("com.mkotsollaris.mec.controller"))
-                .paths(regex("/product.*"))
+                .paths(regex("/.*"))
                 .build().apiInfo(metaData());
     }
 
