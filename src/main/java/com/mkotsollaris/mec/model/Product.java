@@ -6,7 +6,8 @@ public class Product
 
     private String[] dominantColours;
 
-    public Product(String[] productUrls, String[] dominantColours) {
+    public Product(String[] productUrls, String[] dominantColours)
+    {
         this.productUrls = productUrls;
         this.dominantColours = dominantColours;
     }
