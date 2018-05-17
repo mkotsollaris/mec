@@ -17,7 +17,7 @@ import java.io.IOException;
 
     @RequestMapping(value = "search&keywords={keywords}",
             method = RequestMethod.GET)
-    public Product getProduct(@PathVariable("keywords") String... keywords)
+    public Product getProduct(@PathVariable("keywords") String keywords)
             throws IOException
     {
         String[]
