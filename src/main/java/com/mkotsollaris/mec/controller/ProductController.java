@@ -1,5 +1,6 @@
 package com.mkotsollaris.mec.controller;
 
+import com.mkotsollaris.mec.model.MECProducts;
 import com.mkotsollaris.mec.model.Product;
 import com.mkotsollaris.mec.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ import java.io.IOException;
         String[]
                 dominantColours =
                 {"dominantColour1", "dominantColour2", "dominantColour3"};
-        this.productService.getProductFromMecApiByKeywords(keywords);
-        return new Product(null, null);
+        MECProducts mecProducts = this.productService.getProductFromMecApiByKeywords(keywords);
+        return new Product(mecProducts.getFiveImageURLs(), null);
     }
 
 }

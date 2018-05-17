@@ -10,7 +10,8 @@ public class MECDefaultImageURLs implements Serializable
     private String main_image_url;
     private String zoom_image_url;
 
-    public MECDefaultImageURLs() {
+    public MECDefaultImageURLs()
+    {
 
     }
 
