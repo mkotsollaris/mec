@@ -13,7 +13,6 @@ import java.util.List;
 {
     @Autowired ProductService productService;
 
-    private long id;
     private MECProduct[] mecProduct;
 
     public MECProducts()
@@ -35,6 +34,10 @@ import java.util.List;
     public String[] getFiveImageURLs()
     {
         List<String> list = new ArrayList<>();
+        if(this.mecProduct == null)
+        {
+            return null;
+        }
         for(MECProduct mecProduct : this.mecProduct)
         {
             list.add(mecProduct.getDefault_image_urls().getLarge_image_url());
@@ -43,6 +46,8 @@ import java.util.List;
             list.add(mecProduct.getDefault_image_urls().getZoom_image_url());
             if(list.size() > 5) break;
         }
-        return list.subList(0, 5).toArray(new String[0]);
+        return list.subList(0, list.size() >= 5 ? 5 : list.size())
+                .toArray(new String[0]);
+
     }
 }

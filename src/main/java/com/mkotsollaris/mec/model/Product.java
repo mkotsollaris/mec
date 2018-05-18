@@ -2,7 +2,6 @@ package com.mkotsollaris.mec.model;
 
 public class Product
 {
-
     private String[] productUrls;
 
     private String[][] dominantColours;

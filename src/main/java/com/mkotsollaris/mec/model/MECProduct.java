@@ -1,11 +1,13 @@
 package com.mkotsollaris.mec.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MECProduct implements Serializable
 {
     private long id;
-    private MECListPrice list_price;
     private MECDefaultImageURLs default_image_urls;
     private Boolean all_skus_clearance;
     private String product_code;
@@ -20,8 +22,6 @@ public class MECProduct implements Serializable
     private String default_colour_code;
     private String web_url;
     private Boolean clearance;
-    private MECClearancePrice clearance_price;
-    private MECTracking tracking;
     private String product_details_url;
 
     public MECProduct()
@@ -29,15 +29,6 @@ public class MECProduct implements Serializable
 
     }
 
-    public MECListPrice getList_price()
-    {
-        return list_price;
-    }
-
-    public void setList_price(MECListPrice list_price)
-    {
-        this.list_price = list_price;
-    }
 
     public Boolean getAll_skus_clearance()
     {
@@ -169,16 +160,6 @@ public class MECProduct implements Serializable
         this.clearance = clearance;
     }
 
-    public MECTracking getTracking()
-    {
-        return tracking;
-    }
-
-    public void setTracking(MECTracking tracking)
-    {
-        this.tracking = tracking;
-    }
-
     public String getProduct_details_url()
     {
         return product_details_url;
@@ -187,16 +168,6 @@ public class MECProduct implements Serializable
     public void setProduct_details_url(String product_details_url)
     {
         this.product_details_url = product_details_url;
-    }
-
-    public MECClearancePrice getClearance_price()
-    {
-        return clearance_price;
-    }
-
-    public void setClearance_price(MECClearancePrice clearance_price)
-    {
-        this.clearance_price = clearance_price;
     }
 
     public MECDefaultImageURLs getDefault_image_urls()

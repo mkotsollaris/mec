@@ -12,8 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.Stack;
 
-@Service
-public class ProductService
+@Service public class ProductService
 {
     private RestTemplate rest = new RestTemplate();
     private HttpHeaders headers = new HttpHeaders();
@@ -35,6 +34,10 @@ public class ProductService
     public String[][] getThreeMostDominantColours(String[] imageURLs)
             throws IOException
     {
+        if(imageURLs == null)
+        {
+            return null;
+        }
         String[][] dominantColours = new String[imageURLs.length][3];
         for(int i = 0; i < imageURLs.length; i++)
         {
@@ -62,9 +65,11 @@ public class ProductService
         String[] lines = cssResponse.split("\n");
         for(String line : lines)
         {
-            if(threeColoursStack.size()==3) break;
+            if(threeColoursStack.size() == 3) break;
             //TODO optimise in one less regexes
-            String wantedColour = line.split("color:")[1].split(" ")[0].split("#")[1];
+            String
+                    wantedColour =
+                    line.split("color:")[1].split(" ")[0].split("#")[1];
             threeColoursStack.push(wantedColour);
         }
         return threeColoursStack.toArray(new String[3]);
