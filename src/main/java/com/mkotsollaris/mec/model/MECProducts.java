@@ -1,6 +1,8 @@
 package com.mkotsollaris.mec.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mkotsollaris.mec.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,6 +11,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true) public class MECProducts
         implements Serializable
 {
+    @Autowired ProductService productService;
+
     private long id;
     private MECProduct[] mecProduct;
 
@@ -40,11 +44,5 @@ import java.util.List;
             if(list.size() > 5) break;
         }
         return list.subList(0, 5).toArray(new String[0]);
-    }
-
-    public String[] getThreeDominantColours()
-    {
-        //todo
-        return null;
     }
 }

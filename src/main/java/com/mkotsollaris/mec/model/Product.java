@@ -2,11 +2,12 @@ package com.mkotsollaris.mec.model;
 
 public class Product
 {
+
     private String[] productUrls;
 
-    private String[] dominantColours;
+    private String[][] dominantColours;
 
-    public Product(String[] productUrls, String[] dominantColours)
+    public Product(String[] productUrls, String[][] dominantColours)
     {
         this.productUrls = productUrls;
         this.dominantColours = dominantColours;
@@ -22,7 +23,7 @@ public class Product
         this.productUrls = productUrls;
     }
 
-    public String[] getDominantColours()
+    public String[][] getDominantColours()
     {
         return dominantColours;
     }
