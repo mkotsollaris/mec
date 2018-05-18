@@ -33,11 +33,11 @@ import java.util.List;
     // gets first 5 images found in MECProduct's default_image_urls
     public String[] getFiveImageURLs()
     {
-        List<String> list = new ArrayList<>();
         if(this.mecProduct == null)
         {
             return null;
         }
+        List<String> list = new ArrayList<>();
         for(MECProduct mecProduct : this.mecProduct)
         {
             list.add(mecProduct.getDefault_image_urls().getLarge_image_url());
@@ -48,6 +48,5 @@ import java.util.List;
         }
         return list.subList(0, list.size() >= 5 ? 5 : list.size())
                 .toArray(new String[0]);
-
     }
 }
