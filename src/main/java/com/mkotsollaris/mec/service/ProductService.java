@@ -12,42 +12,37 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.Stack;
 
-@Service public class ProductService
-{
+@Service
+public class ProductService {
     private RestTemplate rest = new RestTemplate();
     private HttpHeaders headers = new HttpHeaders();
     private HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
 
 
     public MECProducts getMECProductFromMecApiByKeywords(String keywords)
-            throws IOException
-    {
+            throws IOException {
         String url = "http://www.mec.ca/api/v1/products/search?keywords=";
         ResponseEntity<String>
                 responseEntity =
                 rest.exchange(url + keywords, HttpMethod.GET, requestEntity,
-                              String.class);
+                        String.class);
         return new ObjectMapper()
                 .readValue(responseEntity.getBody(), MECProducts.class);
     }
 
     public String[][] getThreeMostDominantColours(String[] imageURLs)
-            throws IOException
-    {
-        if(imageURLs == null)
-        {
+            throws IOException {
+        if (imageURLs == null) {
             return null;
         }
         String[][] dominantColours = new String[imageURLs.length][3];
-        for(int i = 0; i < imageURLs.length; i++)
-        {
+        for (int i = 0; i < imageURLs.length; i++) {
             dominantColours[i] = this.getThreeMostDominantColours(imageURLs[i]);
         }
         return dominantColours;
     }
 
-    private String[] getThreeMostDominantColours(String imageURL)
-    {
+    private String[] getThreeMostDominantColours(String imageURL) {
         String serverURL = "https://mec.imgix.net/";
         String urlPreSuffix = imageURL.split("https://cdn\\.mec\\.ca/")[1];
         String urlSuffix = "?&palette=css&colors=3";
@@ -59,13 +54,11 @@ import java.util.Stack;
     }
 
 
-    private String[] extractThreeColours(String cssResponse)
-    {
+    private String[] extractThreeColours(String cssResponse) {
         Stack<String> threeColoursStack = new Stack<>();
         String[] lines = cssResponse.split("\n");
-        for(String line : lines)
-        {
-            if(threeColoursStack.size() == 3) break;
+        for (String line : lines) {
+            if (threeColoursStack.size() == 3) break;
             //TODO optimise in one less regexes
             String
                     wantedColour =
