@@ -21,15 +21,15 @@ import java.io.IOException;
     public Product getProduct(@PathVariable("keywords") String keywords)
             throws IOException
     {
-        String[]
-                productUrls =
-                {"productUrl1", "productUrl2", "productUrl3", "productUrl4",
-                        "productUrl5"};
-        String[]
-                dominantColours =
-                {"dominantColour1", "dominantColour2", "dominantColour3"};
-        MECProducts mecProducts = this.productService.getProductFromMecApiByKeywords(keywords);
-        return new Product(mecProducts.getFiveImageURLs(), null);
+        MECProducts
+                mecProducts =
+                this.productService.getMECProductFromMecApiByKeywords(keywords);
+        String[] maxFiveImageURLs = mecProducts.getFiveImageURLs();
+        String[][]
+                threeDominantColours =
+                this.productService
+                        .getThreeMostDominantColours(maxFiveImageURLs);
+        return new Product(maxFiveImageURLs, threeDominantColours);
     }
 
 }
