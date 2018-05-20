@@ -1,24 +1,24 @@
 package com.mkotsollaris.mec.model;
 
 public class Product {
-    private String[] productUrls;
+    private String productUrl;
 
-    private String[][] dominantColours;
+    private String[] dominantColours;
 
-    public Product(String[] productUrls, String[][] dominantColours) {
-        this.productUrls = productUrls;
+    public Product(String productUrl, String[] dominantColours) {
+        this.productUrl = productUrl;
         this.dominantColours = dominantColours;
     }
 
-    public String[] getProductUrls() {
-        return productUrls;
+    public String getProductUrl() {
+        return productUrl;
     }
 
-    public void setProductUrls(String[] productUrls) {
-        this.productUrls = productUrls;
+    public void setProductUrl(String productUrls) {
+        this.productUrl = productUrls;
     }
 
-    public String[][] getDominantColours() {
+    public String[] getDominantColours() {
         return dominantColours;
     }
 }

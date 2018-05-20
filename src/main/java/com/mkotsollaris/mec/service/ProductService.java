@@ -63,7 +63,7 @@ public class ProductService {
             //TODO possible optimisation in one regex
             String
                     wantedColour =
-                    line.split("color:")[1].split(" ")[0].split("#")[1];
+                    line.split("color:")[1].split(" ")[0];
             threeColoursStack.push(wantedColour);
         }
         return threeColoursStack.toArray(new String[3]);

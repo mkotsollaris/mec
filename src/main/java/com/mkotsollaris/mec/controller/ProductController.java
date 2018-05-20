@@ -18,7 +18,7 @@ import java.io.IOException;
 
     @RequestMapping(value = "search&keywords={keywords}",
             method = RequestMethod.GET)
-    public Product getProduct(@PathVariable("keywords") String keywords)
+    public Product[] getProduct(@PathVariable("keywords") String keywords)
             throws IOException
     {
         MECProducts
@@ -29,7 +29,11 @@ import java.io.IOException;
                 threeDominantColours =
                 this.productService
                         .getThreeMostDominantColours(maxFiveImageURLs);
-        return new Product(maxFiveImageURLs, threeDominantColours);
+        Product[] products = new Product[5];
+        for(int i=0;i<maxFiveImageURLs.length;i++) {
+            products[i] = new Product(maxFiveImageURLs[i], threeDominantColours[i]);
+        }
+        return products;
     }
 
 }
