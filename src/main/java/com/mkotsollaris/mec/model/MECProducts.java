@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MECProducts
-        implements Serializable {
+public class MECProducts implements Serializable {
+
     @Autowired
     ProductService productService;
 
