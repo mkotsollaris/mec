@@ -59,9 +59,7 @@ public class ProductService {
         String[] lines = cssResponse.split("\n");
         for (String line : lines) {
             if (threeColoursStack.size() == 3) break;
-            String
-                    wantedColour =
-                    line.split("color:")[1].split(" ")[0];
+            String wantedColour = line.split("color:")[1].split(" ")[0];
             threeColoursStack.push(wantedColour);
         }
         return threeColoursStack.toArray(new String[3]);
