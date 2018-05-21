@@ -54,13 +54,11 @@ public class ProductService {
     }
 
 
-    // TODO Test
     private String[] extractThreeColours(String cssResponse) {
         Stack<String> threeColoursStack = new Stack<>();
         String[] lines = cssResponse.split("\n");
         for (String line : lines) {
             if (threeColoursStack.size() == 3) break;
-            //TODO possible optimisation in one regex
             String
                     wantedColour =
                     line.split("color:")[1].split(" ")[0];

@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@RestController @RequestMapping("/product") public class ProductController
-{
+@RestController
+@RequestMapping("/product")
+public class ProductController {
 
-    @Autowired ProductService productService;
+    @Autowired
+    ProductService productService;
 
     @RequestMapping(value = "search&keywords={keywords}",
             method = RequestMethod.GET)
     public Product[] getProduct(@PathVariable("keywords") String keywords)
-            throws IOException
-    {
+            throws IOException {
         MECProducts
                 mecProducts =
                 this.productService.getMECProductFromMecApiByKeywords(keywords);
@@ -29,8 +30,11 @@ import java.io.IOException;
                 threeDominantColours =
                 this.productService
                         .getThreeMostDominantColours(maxFiveImageURLs);
+        if (threeDominantColours == null || maxFiveImageURLs == null) {
+            return null;
+        }
         Product[] products = new Product[5];
-        for(int i=0;i<maxFiveImageURLs.length;i++) {
+        for (int i = 0; i < maxFiveImageURLs.length; i++) {
             products[i] = new Product(maxFiveImageURLs[i], threeDominantColours[i]);
         }
         return products;
