@@ -26,7 +26,6 @@ public class ProductServiceTests {
     public void whenUserProductIsRequested_thenThreeDomColAreComputedCorrectly() throws IOException {
         String[][] expectedMostDomColours = initMostDomColours();
         MECProducts mecProducts = initMecProducts();
-        Mockito.when(productService.getMECProductFromMecApiByKeywords("bike")).thenReturn(mecProducts);
         Mockito.when(productService.getThreeMostDominantColours(mecProducts.getFiveImageURLs())).thenReturn(expectedMostDomColours);
         String[][] actualMostDomColours = productService.getThreeMostDominantColours(mecProducts.getFiveImageURLs());
         Assert.assertEquals(actualMostDomColours.length, expectedMostDomColours.length);
